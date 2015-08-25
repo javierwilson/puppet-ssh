@@ -48,13 +48,13 @@ define ssh::resource::known_hosts($ensure=present, $hosts, $user, $root="/home/$
   ## Ensure that all files and execs get the correct user/group combinations.
   Exec {
     user => $user,
-    group => $user,
+    #group => $user,
     require => File[$root],
   }
   File {
     ensure => $ensure ? { present => file, default => absent },
     owner => $user,
-    group => $user,
+    #group => $user,
   }
   file{ $root:
    ensure => directory
